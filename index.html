@@ -3,24 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>El Khdewy | بن الخديوي</title>
+<title>El Khdewy | بن وكافيه الخديوي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FDF8F3;
-    --bg-warm: #F7F0E8;
-    --card: #FFFFFF;
+    --bg: #0F0A08;
+    --bg-elevated: #1A1210;
+    --card: #231A16;
     --primary: #D4653F;
     --primary-light: #E87E5A;
-    --primary-dark: #B55230;
     --accent: #C9A96E;
-    --text: #2C1810;
-    --text-light: #6B5B50;
-    --text-muted: #A89B8F;
-    --border: #EDE5DB;
-    --shadow: 0 2px 12px rgba(44,24,16,0.06);
-    --shadow-hover: 0 8px 28px rgba(44,24,16,0.12);
+    --text: #F5F0EB;
+    --text-dim: #B8A99A;
+    --text-muted: #7A6B5E;
+    --border: #2D221C;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -30,420 +27,515 @@
     color: var(--text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    padding-bottom: 80px;
+    overflow-x: hidden;
   }
   a { text-decoration: none; color: inherit; }
   button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  img { max-width: 100%; display: block; }
 
-  /* ===== HERO - Full Width ===== */
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 16px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(15,10,8,0.95) 0%, transparent 100%);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-fezz {
+    width: 32px; height: 22px;
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 100%);
+    border-radius: 3px 3px 1px 1px; position: relative;
+  }
+  .nav-fezz::after {
+    content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 16px solid transparent; border-right: 16px solid transparent;
+    border-top: 6px solid var(--primary);
+  }
+  .nav-brand { font-size: 16px; font-weight: 700; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 20px; }
+  .nav-link { font-size: 13px; font-weight: 500; color: var(--text-dim); transition: color 0.2s; }
+  .nav-link:hover { color: var(--primary-light); }
+
+  /* ===== HERO ===== */
   .hero {
-    background: linear-gradient(135deg, #3D2314 0%, #5C3A28 50%, #7A4F3A 100%);
-    padding: 40px 20px 50px;
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
     text-align: center;
+    padding: 100px 20px 60px;
     position: relative;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-elevated) 50%, var(--bg) 100%);
     overflow: hidden;
   }
   .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    opacity: 0.5;
+    content: ''; position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,101,63,0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
-  .hero-inner { position: relative; z-index: 1; }
 
-  .fez-wrap { width: 80px; margin: 0 auto 16px; position: relative; }
-  .fez {
-    width: 60px; height: 42px; margin: 0 auto;
-    background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 60%, var(--primary-dark) 100%);
-    border-radius: 6px 6px 2px 2px;
-    box-shadow: 0 6px 20px rgba(212,101,63,0.35), inset 0 1px 3px rgba(255,255,255,0.2);
+  .hero-fezz-wrap { position: relative; margin-bottom: 24px; }
+  .hero-fezz {
+    width: 80px; height: 56px; margin: 0 auto;
+    background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary) 60%, #A04020 100%);
+    border-radius: 8px 8px 2px 2px;
+    box-shadow: 0 8px 32px rgba(212,101,63,0.3), inset 0 2px 4px rgba(255,255,255,0.15);
     position: relative;
   }
-  .fez::after {
-    content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+  .hero-fezz::after {
+    content: ''; position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
     width: 0; height: 0;
-    border-left: 30px solid transparent; border-right: 30px solid transparent;
-    border-top: 12px solid var(--primary-dark);
+    border-left: 40px solid transparent; border-right: 40px solid transparent;
+    border-top: 16px solid #A04020;
   }
-  .fez-band {
-    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
-    width: 46px; height: 2.5px; background: rgba(0,0,0,0.15); border-radius: 2px;
+  .hero-fezz-band {
+    position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 3px; background: rgba(0,0,0,0.2); border-radius: 2px;
   }
-  .fez-base {
-    width: 66px; height: 8px; margin: 10px auto 0;
-    background: linear-gradient(180deg, #2a2a2a 0%, #111 100%);
-    border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  .hero-fezz-tassel {
+    position: absolute; top: -10px; right: -8px;
+    width: 12px; height: 12px; background: #111; border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  }
+  .hero-fezz-base {
+    width: 86px; height: 10px; margin: 14px auto 0;
+    background: linear-gradient(180deg, #2a2a2a 0%, #0a0a0a 100%);
+    border-radius: 3px; box-shadow: 0 3px 12px rgba(0,0,0,0.5);
   }
 
-  .brand-ar { font-size: 30px; font-weight: 800; color: #fff; letter-spacing: 1px; }
-  .brand-en { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 5px; text-transform: uppercase; margin-top: 2px; }
-  .tagline { 
-    font-size: 12px; color: var(--accent); margin-top: 10px; font-weight: 500;
-    display: inline-flex; align-items: center; gap: 8px;
+  .hero-title { font-size: 42px; font-weight: 900; letter-spacing: 2px; margin-bottom: 6px; }
+  .hero-subtitle { font-size: 14px; font-weight: 600; color: var(--text-muted); letter-spacing: 6px; text-transform: uppercase; margin-bottom: 16px; }
+  .hero-tagline { font-size: 16px; color: var(--accent); font-weight: 500; margin-bottom: 32px; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff; font-size: 15px; font-weight: 700;
+    box-shadow: 0 4px 20px rgba(212,101,63,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .tagline::before, .tagline::after { content: ''; width: 20px; height: 1px; background: rgba(201,169,110,0.4); }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(212,101,63,0.45); }
+  .hero-scroll {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    width: 24px; height: 40px; border: 2px solid var(--text-muted); border-radius: 12px;
+    display: flex; justify-content: center; padding-top: 8px;
+  }
+  .hero-scroll::after {
+    content: ''; width: 4px; height: 8px; background: var(--primary); border-radius: 2px;
+    animation: scrollBounce 1.5s infinite;
+  }
+  @keyframes scrollBounce { 0%, 100% { transform: translateY(0); opacity: 1; } 50% { transform: translateY(6px); opacity: 0.5; } }
 
-  /* ===== CATEGORY STICKY BAR ===== */
-  .cat-bar {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(253,248,243,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 16px;
-    overflow-x: auto;
-    scrollbar-width: none;
+  /* ===== SECTIONS COMMON ===== */
+  .section { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
+  .sec-label { font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .sec-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+  .sec-desc { font-size: 15px; color: var(--text-dim); line-height: 1.8; max-width: 600px; }
+
+  /* ===== ABOUT ===== */
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 32px; }
+  @media (min-width: 640px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+  .about-img { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); }
+  .about-img img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.4s; }
+  .about-img:hover img { transform: scale(1.05); }
+  .about-text { display: flex; flex-direction: column; justify-content: center; }
+  .about-text p { font-size: 14px; color: var(--text-dim); line-height: 1.9; margin-bottom: 12px; }
+  .about-highlight { display: flex; gap: 24px; margin-top: 16px; }
+  .about-stat { text-align: center; }
+  .about-stat-num { font-size: 28px; font-weight: 800; color: var(--primary); }
+  .about-stat-label { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+
+  /* ===== FEATURED PRODUCTS ===== */
+  .featured { background: var(--bg-elevated); }
+  .featured-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 32px; }
+  @media (min-width: 520px) { .featured-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+  .feat-card {
+    background: var(--card); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s;
   }
-  .cat-bar::-webkit-scrollbar { display: none; }
-  .cat-list { display: flex; gap: 8px; }
-  .cat-pill {
-    flex-shrink: 0; padding: 8px 16px; border-radius: 20px;
-    background: transparent; border: 1.5px solid var(--border);
-    color: var(--text-light); font-size: 13px; font-weight: 600;
+  .feat-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .feat-img { height: 140px; overflow: hidden; }
+  .feat-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .feat-card:hover .feat-img img { transform: scale(1.08); }
+  .feat-body { padding: 14px; }
+  .feat-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .feat-price { font-size: 15px; font-weight: 800; color: var(--primary); }
+
+  /* ===== MENU SECTION ===== */
+  .menu-tabs { display: flex; gap: 8px; margin: 32px 0 24px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .menu-tabs::-webkit-scrollbar { display: none; }
+  .menu-tab {
+    flex-shrink: 0; padding: 10px 20px; border-radius: 24px;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--text-dim); font-size: 13px; font-weight: 600;
     transition: all 0.2s; white-space: nowrap; font-family: inherit;
   }
-  .cat-pill:hover { background: var(--bg-warm); border-color: var(--accent); }
-  .cat-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 3px 12px rgba(212,101,63,0.25); }
+  .menu-tab:hover { border-color: var(--primary); color: var(--text); }
+  .menu-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-  /* ===== SECTIONS ===== */
-  .container { max-width: 600px; margin: 0 auto; padding: 20px 16px; }
-  .menu-section { margin-bottom: 32px; }
-  .menu-section.hidden { display: none; }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: block; animation: fadeIn 0.3s; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  .sec-header {
-    display: flex; align-items: flex-end; gap: 10px;
-    margin-bottom: 16px; padding-bottom: 10px;
-    border-bottom: 2px solid var(--border);
+  .menu-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; }
+  .menu-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; background: var(--card); gap: 12px;
+    transition: background 0.15s;
   }
-  .sec-emoji { font-size: 28px; line-height: 1; }
-  .sec-title-wrap { flex: 1; }
-  .sec-title { font-size: 20px; font-weight: 700; color: var(--text); }
-  .sec-subtitle { font-size: 12px; color: var(--text-muted); font-weight: 500; }
-  .sec-count { 
-    font-size: 12px; font-weight: 700; color: var(--primary);
-    background: rgba(212,101,63,0.08); padding: 4px 10px; border-radius: 10px;
-  }
+  .menu-item:hover { background: rgba(212,101,63,0.05); }
+  .menu-info { flex: 1; }
+  .menu-name { font-size: 15px; font-weight: 600; }
+  .menu-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .menu-price { font-size: 16px; font-weight: 800; color: var(--primary); font-variant-numeric: tabular-nums; }
 
-  /* ===== PRODUCT CARDS - Large Touchable ===== */
-  .products { display: flex; flex-direction: column; gap: 10px; }
+  /* ===== GALLERY ===== */
+  .gallery { background: var(--bg-elevated); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 32px; }
+  @media (min-width: 520px) { .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+  .gallery-item { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); aspect-ratio: 1; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 
-  .product-row {
-    display: flex; align-items: center; gap: 14px;
-    background: var(--card); border-radius: 16px;
-    padding: 14px 16px; border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: all 0.2s ease;
-  }
-  .product-row:hover { transform: translateX(-4px); box-shadow: var(--shadow-hover); border-color: rgba(212,101,63,0.15); }
-
-  .product-icon {
-    width: 48px; height: 48px; border-radius: 14px;
-    background: linear-gradient(135deg, var(--bg-warm) 0%, #F0E6D8 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; flex-shrink: 0;
+  /* ===== CONTACT ===== */
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  @media (min-width: 520px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+  .contact-card {
+    background: var(--card); border-radius: 16px; padding: 24px;
     border: 1px solid var(--border);
   }
-  .product-info { flex: 1; min-width: 0; }
-  .product-name { font-size: 15px; font-weight: 600; color: var(--text); }
-  .product-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-  .product-price {
-    font-size: 16px; font-weight: 700; color: var(--primary);
-    font-variant-numeric: tabular-nums; flex-shrink: 0;
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
   }
+  .contact-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-label { font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+  .contact-value { font-size: 15px; font-weight: 600; line-height: 1.7; }
+  .contact-value a { color: var(--primary-light); }
 
-  /* ===== GRID CARDS (for smaller sections) ===== */
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .grid-card {
-    background: var(--card); border-radius: 16px;
-    padding: 18px 14px; text-align: center;
-    border: 1px solid var(--border); box-shadow: var(--shadow);
-    transition: all 0.2s ease;
-  }
-  .grid-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
-  .grid-card-emoji { font-size: 36px; margin-bottom: 8px; }
-  .grid-card-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-  .grid-card-price { font-size: 15px; font-weight: 700; color: var(--primary); }
-
-  /* ===== INFO CARDS ===== */
-  .info-section { margin-top: 40px; }
-  .info-card {
-    background: var(--card); border-radius: 20px;
-    padding: 20px; margin-bottom: 12px;
-    border: 1px solid var(--border); box-shadow: var(--shadow);
-  }
-  .info-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .info-icon-box {
-    width: 36px; height: 36px; border-radius: 10px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .info-icon-box svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-  .info-label { font-size: 13px; font-weight: 700; color: var(--text-light); }
-  .info-text { font-size: 14px; line-height: 1.8; color: var(--text); }
-  .info-text a { color: var(--primary); font-weight: 700; }
-
-  .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; }
-  .hour-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-bottom: 1px dashed var(--border); }
-  .hour-row:last-child { border-bottom: none; }
-  .hour-day { color: var(--text-light); font-weight: 500; }
-  .hour-time { font-weight: 600; color: var(--text); }
+  .hours-list { margin-top: 8px; }
+  .hours-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; border-bottom: 1px dashed var(--border); }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { color: var(--text-dim); }
+  .hours-time { font-weight: 600; }
 
   /* ===== FLOATING CTA ===== */
-  .fab-wrap {
-    position: fixed; bottom: 16px; left: 16px; right: 16px; z-index: 200;
-    display: flex; gap: 10px;
-  }
   .fab {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 14px; border-radius: 14px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000;
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 28px; border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     color: #fff; font-size: 14px; font-weight: 700;
-    box-shadow: 0 4px 16px rgba(212,101,63,0.35);
+    box-shadow: 0 4px 24px rgba(212,101,63,0.4);
     transition: transform 0.2s;
   }
-  .fab:hover { transform: translateY(-2px); }
-  .fab-sec {
-    width: 50px; height: 50px; border-radius: 14px;
-    background: var(--card); border: 1.5px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: var(--shadow);
-    color: var(--primary); font-size: 20px;
-    transition: all 0.2s;
-  }
-  .fab-sec:hover { border-color: var(--primary); }
+  .fab:hover { transform: translateX(-50%) translateY(-2px); }
 
   /* ===== FOOTER ===== */
-  .footer { text-align: center; padding: 20px 16px 100px; font-size: 11px; color: var(--text-muted); font-weight: 500; }
+  .footer { text-align: center; padding: 40px 20px 100px; font-size: 12px; color: var(--text-muted); }
+  .footer-brand { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
 
-  /* Animations */
-  @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-  .animate { animation: slideUp 0.4s ease-out; }
+  /* Divider */
+  .divider { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%); border-radius: 2px; margin: 16px 0; }
 </style>
 </head>
 <body>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="fez-wrap">
-      <div class="fez"><div class="fez-band"></div></div>
-      <div class="fez-base"></div>
-    </div>
-    <div class="brand-ar">الخديوي</div>
-    <div class="brand-en">El Khdewy</div>
-    <div class="tagline">From Palaces to Your Cup</div>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-logo">
+    <div class="nav-fezz"></div>
+    <span class="nav-brand">El Khdewy</span>
   </div>
-</section>
-
-<!-- ===== STICKY CATEGORY BAR ===== -->
-<nav class="cat-bar">
-  <div class="cat-list">
-    <button class="cat-pill active" data-cat="hot">☕ ساخنة</button>
-    <button class="cat-pill" data-cat="cold">🧊 باردة</button>
-    <button class="cat-pill" data-cat="smoothie">🍓 سموزي</button>
-    <button class="cat-pill" data-cat="soft">🥤 غازية</button>
-    <button class="cat-pill" data-cat="addons">➕ إضافات</button>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">عنّا</a>
+    <a href="#featured" class="nav-link">المميز</a>
+    <a href="#menu" class="nav-link">المنيو</a>
+    <a href="#gallery" class="nav-link">المكان</a>
+    <a href="#contact" class="nav-link">تواصل</a>
   </div>
 </nav>
 
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-fezz-wrap">
+    <div class="hero-fezz">
+      <div class="hero-fezz-band"></div>
+      <div class="hero-fezz-tassel"></div>
+    </div>
+    <div class="hero-fezz-base"></div>
+  </div>
+  <h1 class="hero-title">الخديوي</h1>
+  <div class="hero-subtitle">El Khdewy Coffee</div>
+  <p class="hero-tagline">From Palaces to Your Cup</p>
+  <a href="#menu" class="hero-cta">اكتشف المنيو</a>
+  <div class="hero-scroll"></div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+  <div class="sec-label">من نحن</div>
+  <h2 class="sec-title">تجربة قهوة أصيلة</h2>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://kimi-web-img.kimi.ai/img/img.freepik.com/0d31d47a390aa83ee4d25413d1b98e9b028c2b8b.jpg" alt="ديكور الخديوي">
+    </div>
+    <div class="about-text">
+      <p>في قلب النزهة الجديدة، يجلس <strong>بن الخديوي</strong> كوجهتك المفضلة للقهوة المختصة والمشروبات الطازجة. نجمع بين الأصالة والعصرية في كل فنجان.</p>
+      <p>من قهوتنا التركية التقليدية إلى اللاتيه المختص، كل مشروب يُحضّر بعناية ليقدم لك تجربة لا تُنسى.</p>
+      <div class="about-highlight">
+        <div class="about-stat"><div class="about-stat-num">46+</div><div class="about-stat-label">صنف مشروب</div></div>
+        <div class="about-stat"><div class="about-stat-num">24</div><div class="about-stat-label">ساعة يومياً</div></div>
+        <div class="about-stat"><div class="about-stat-num">5★</div><div class="about-stat-label">تقييم الزبائن</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURED ===== -->
+<section class="section featured" id="featured">
+  <div class="sec-label">الأكثر طلباً</div>
+  <h2 class="sec-title">منتجاتنا المميزة</h2>
+  <div class="divider"></div>
+  <div class="featured-grid">
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/thumbs.dreamstime.com/2062d6f23eb43bf64a76fe76973ffe3e9fd185f3.jpg" alt="قهوة تركية">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">قهوة تركية</div>
+        <div class="feat-price">25 - 35 ج.م</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/perfectdailygrind.com/5940d9e913f7c148e0fec8682bc9ad6914736ead.jpg" alt="لاتيه آرت">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">لاتيه</div>
+        <div class="feat-price">40 ج.م</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/cdn.loveandlemons.com/6161fba7469034e939409c5163be05b57f0428ca.jpg" alt="موهيتو">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">موهيتو كلاسيك</div>
+        <div class="feat-price">40 ج.م</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/jessicainthekitchen.com/9db62b34c5974fe81bda9f2c16b0db68aee38c1d.jpg" alt="سموزي فراولة">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">سموزي فراولة</div>
+        <div class="feat-price">60 ج.م</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/www.compakgrinders.com/c8304aee83bef60a815d0a0d17c39f6d27824b35.jpg" alt="سبيشالتي كوفي">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">سبيشالتي كوفي</div>
+        <div class="feat-price">30 - 45 ج.م</div>
+      </div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-img">
+        <img src="https://kimi-web-img.kimi.ai/img/thumbs.dreamstime.com/dbf0621e7308a95ff7a290184e37568000495db4.jpg" alt="عصائر طازجة">
+      </div>
+      <div class="feat-body">
+        <div class="feat-name">كوكتيل فواكه</div>
+        <div class="feat-price">50 ج.م</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== MENU ===== -->
-<div class="container" id="menu">
+<section class="section" id="menu">
+  <div class="sec-label">القائمة</div>
+  <h2 class="sec-title">استكشف المنيو</h2>
+  <div class="divider"></div>
 
-  <!-- HOT DRINKS -->
-  <section class="menu-section animate" data-cat="hot">
-    <div class="sec-header">
-      <span class="sec-emoji">☕</span>
-      <div class="sec-title-wrap">
-        <div class="sec-title">مشروبات ساخنة</div>
-        <div class="sec-subtitle">قهوة مختصة وكلاسيك</div>
-      </div>
-      <span class="sec-count">16</span>
-    </div>
-    <div class="products">
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">لاتيه</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">كابتشينو</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍫</div><div class="product-info"><div class="product-name">موكا</div></div><div class="product-price">45 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🥛</div><div class="product-info"><div class="product-name">سبانش لاتيه</div></div><div class="product-price">45 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍫</div><div class="product-info"><div class="product-name">هوت شوكلت</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍵</div><div class="product-info"><div class="product-name">شاي</div></div><div class="product-price">15 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🫖</div><div class="product-info"><div class="product-name">شاي باللبن</div></div><div class="product-price">25 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">أمريكانو</div></div><div class="product-price">45 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">ماكياتو سنجل</div></div><div class="product-price">35 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">ماكياتو دبل</div></div><div class="product-price">45 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🇹🇷</div><div class="product-info"><div class="product-name">قهوة تركي سنجل</div></div><div class="product-price">25 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🇹🇷</div><div class="product-info"><div class="product-name">قهوة تركي دبل</div></div><div class="product-price">35 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">قهوة فرنساوي</div></div><div class="product-price">35 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🌰</div><div class="product-info"><div class="product-name">قهوة بندق</div></div><div class="product-price">35 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">إسبريسو سنجل</div></div><div class="product-price">30 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">☕</div><div class="product-info"><div class="product-name">إسبريسو دبل</div></div><div class="product-price">40 ج.م</div></div>
-    </div>
-  </section>
+  <div class="menu-tabs">
+    <button class="menu-tab active" data-panel="hot">☕ ساخنة</button>
+    <button class="menu-tab" data-panel="cold">🧊 باردة</button>
+    <button class="menu-tab" data-panel="smoothie">🍓 سموزي</button>
+    <button class="menu-tab" data-panel="soft">🥤 غازية</button>
+    <button class="menu-tab" data-panel="addons">➕ إضافات</button>
+  </div>
 
-  <!-- COLD DRINKS -->
-  <section class="menu-section hidden" data-cat="cold">
-    <div class="sec-header">
-      <span class="sec-emoji">🧊</span>
-      <div class="sec-title-wrap">
-        <div class="sec-title">مشروبات باردة</div>
-        <div class="sec-subtitle">فرابيه وعصائر طبيعية</div>
+  <div class="menu-panels">
+    <div class="menu-panel active" id="panel-hot">
+      <div class="menu-list">
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">لاتيه</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">كابتشينو</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">موكا</div></div><div class="menu-price">45 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سبانش لاتيه</div></div><div class="menu-price">45 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">هوت شوكلت</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">شاي</div></div><div class="menu-price">15 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">شاي باللبن</div></div><div class="menu-price">25 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">أمريكانو</div></div><div class="menu-price">45 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ماكياتو سنجل</div></div><div class="menu-price">35 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ماكياتو دبل</div></div><div class="menu-price">45 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">قهوة تركي سنجل</div></div><div class="menu-price">25 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">قهوة تركي دبل</div></div><div class="menu-price">35 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">قهوة فرنساوي</div></div><div class="menu-price">35 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">قهوة بندق</div></div><div class="menu-price">35 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">إسبريسو سنجل</div></div><div class="menu-price">30 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">إسبريسو دبل</div></div><div class="menu-price">40 ج.م</div></div>
       </div>
-      <span class="sec-count">16</span>
     </div>
-    <div class="products">
-      <div class="product-row"><div class="product-icon">🥤</div><div class="product-info"><div class="product-name">نوكاتينو</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🫐</div><div class="product-info"><div class="product-name">بلوبيري فرابيه</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍦</div><div class="product-info"><div class="product-name">فانيليا فرابيه</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍮</div><div class="product-info"><div class="product-name">كراميل فرابيه</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍫</div><div class="product-info"><div class="product-name">شوكلت فرابيه</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🧊</div><div class="product-info"><div class="product-name">آيسد لاتيه</div></div><div class="product-price">35 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">⚡</div><div class="product-info"><div class="product-name">ريد بول موهيتو</div></div><div class="product-price">70 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍃</div><div class="product-info"><div class="product-name">موهيتو كلاسيك</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍋</div><div class="product-info"><div class="product-name">ليمون</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🌿</div><div class="product-info"><div class="product-name">ليمون نعناع</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🥭</div><div class="product-info"><div class="product-name">عصير مانجو</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍓</div><div class="product-info"><div class="product-name">عصير فراولة</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍊</div><div class="product-info"><div class="product-name">عصير برتقال</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">🍹</div><div class="product-info"><div class="product-name">كوكتيل</div></div><div class="product-price">50 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">✨</div><div class="product-info"><div class="product-name">جولد برو</div></div><div class="product-price">40 ج.م</div></div>
-      <div class="product-row"><div class="product-icon">✨</div><div class="product-info"><div class="product-name">جولد برو فانيليا</div></div><div class="product-price">50 ج.م</div></div>
+    <div class="menu-panel" id="panel-cold">
+      <div class="menu-list">
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">نوكاتينو</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">بلوبيري فرابيه</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">فانيليا فرابيه</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">كراميل فرابيه</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">شوكلت فرابيه</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">آيسد لاتيه</div></div><div class="menu-price">35 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ريد بول موهيتو</div></div><div class="menu-price">70 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">موهيتو كلاسيك</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ليمون</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ليمون نعناع</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">عصير مانجو</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">عصير فراولة</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">عصير برتقال</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">كوكتيل</div></div><div class="menu-price">50 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">جولد برو</div></div><div class="menu-price">40 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">جولد برو فانيليا</div></div><div class="menu-price">50 ج.م</div></div>
+      </div>
     </div>
-  </section>
+    <div class="menu-panel" id="panel-smoothie">
+      <div class="menu-list">
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سموزي مانجو</div></div><div class="menu-price">60 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سموزي فراولة</div></div><div class="menu-price">60 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سموزي ليمون</div></div><div class="menu-price">60 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سموزي ليمون نعناع</div></div><div class="menu-price">60 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سموزي بطيخ</div></div><div class="menu-price">60 ج.م</div></div>
+      </div>
+    </div>
+    <div class="menu-panel" id="panel-soft">
+      <div class="menu-list">
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">بيبسي</div></div><div class="menu-price">20 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">سفن أب</div></div><div class="menu-price">20 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ميرندا</div></div><div class="menu-price">20 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">ريد بول</div></div><div class="menu-price">60 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">مياه صغيرة</div></div><div class="menu-price">10 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">لبن</div></div><div class="menu-price">20 ج.م</div></div>
+      </div>
+    </div>
+    <div class="menu-panel" id="panel-addons">
+      <div class="menu-list">
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">نكهات</div></div><div class="menu-price">20 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">توبينج</div></div><div class="menu-price">20 ج.م</div></div>
+        <div class="menu-item"><div class="menu-info"><div class="menu-name">إسبريسو إضافي</div></div><div class="menu-price">20 ج.م</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- SMOOTHIE -->
-  <section class="menu-section hidden" data-cat="smoothie">
-    <div class="sec-header">
-      <span class="sec-emoji">🍓</span>
-      <div class="sec-title-wrap">
-        <div class="sec-title">سموزي</div>
-        <div class="sec-subtitle">طازج وصحي</div>
-      </div>
-      <span class="sec-count">5</span>
+<!-- ===== GALLERY ===== -->
+<section class="section gallery" id="gallery">
+  <div class="sec-label">المكان</div>
+  <h2 class="sec-title">جولة داخل الخديوي</h2>
+  <div class="divider"></div>
+  <div class="gallery-grid">
+    <div class="gallery-item wide">
+      <img src="https://kimi-web-img.kimi.ai/img/img.freepik.com/0d31d47a390aa83ee4d25413d1b98e9b028c2b8b.jpg" alt="ديكور الخديوي">
     </div>
-    <div class="grid-2">
-      <div class="grid-card"><div class="grid-card-emoji">🥭</div><div class="grid-card-name">مانجو</div><div class="grid-card-price">60 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🍓</div><div class="grid-card-name">فراولة</div><div class="grid-card-price">60 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🍋</div><div class="grid-card-name">ليمون</div><div class="grid-card-price">60 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🌿</div><div class="grid-card-name">ليمون نعناع</div><div class="grid-card-price">60 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🍉</div><div class="grid-card-name">بطيخ</div><div class="grid-card-price">60 ج.م</div></div>
+    <div class="gallery-item">
+      <img src="https://kimi-web-img.kimi.ai/img/thumbs.dreamstime.com/8924582e2b4a3a3dc9599601e8c20a343badc0f4.jpg" alt="جلسة دافئة">
     </div>
-  </section>
+    <div class="gallery-item">
+      <img src="https://kimi-web-img.kimi.ai/img/www.shutterstock.com/f3de387cc3e0489dfb966183735fb7ea5385c271.jpg" alt="إضاءة دافئة">
+    </div>
+    <div class="gallery-item wide">
+      <img src="https://kimi-web-img.kimi.ai/img/media.istockphoto.com/5b83c20a54e7496646ad9b0b1a250d30c400554a.jpg" alt="سموزي طازج">
+    </div>
+  </div>
+</section>
 
-  <!-- SOFT DRINKS -->
-  <section class="menu-section hidden" data-cat="soft">
-    <div class="sec-header">
-      <span class="sec-emoji">🥤</span>
-      <div class="sec-title-wrap">
-        <div class="sec-title">مشروبات غازية</div>
-        <div class="sec-subtitle">مياه وطاقة</div>
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+  <div class="sec-label">تواصل معنا</div>
+  <h2 class="sec-title">زورنا أو اطلب أونلاين</h2>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
-      <span class="sec-count">6</span>
+      <div class="contact-label">العنوان</div>
+      <div class="contact-value">شارع أحمد إسماعيل، من شارع الخمسين، النزهة الجديدة، القاهرة</div>
     </div>
-    <div class="grid-2">
-      <div class="grid-card"><div class="grid-card-emoji">🥤</div><div class="grid-card-name">بيبسي</div><div class="grid-card-price">20 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🍋</div><div class="grid-card-name">سفن أب</div><div class="grid-card-price">20 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🍊</div><div class="grid-card-name">ميرندا</div><div class="grid-card-price">20 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">⚡</div><div class="grid-card-name">ريد بول</div><div class="grid-card-price">60 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">💧</div><div class="grid-card-name">مياه صغيرة</div><div class="grid-card-price">10 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">🥛</div><div class="grid-card-name">لبن</div><div class="grid-card-price">20 ج.م</div></div>
+    <div class="contact-card">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <div class="contact-label">التواصل</div>
+      <div class="contact-value">
+        <a href="https://wa.me/201142200025">واتساب: 0114 220 0025</a><br>
+        <a href="https://www.facebook.com/people/%D9%85%D8%B7%D8%AD%D9%86-%D8%A8%D9%86-%D8%A7%D9%84%D8%AE%D8%AF%D9%8A%D9%88%D9%89/61584338950951/">فيسبوك: مطحن بن الخديوي</a>
+      </div>
     </div>
-  </section>
+    <div class="contact-card" style="grid-column: 1 / -1;">
+      <div class="contact-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="contact-label">مواعيد العمل</div>
+      <div class="hours-list">
+        <div class="hours-row"><span class="hours-day">السبت</span><span class="hours-time">24 ساعة</span></div>
+        <div class="hours-row"><span class="hours-day">الأحد</span><span class="hours-time">24 ساعة</span></div>
+        <div class="hours-row"><span class="hours-day">الإثنين</span><span class="hours-time">٨ ص – ٢ ص</span></div>
+        <div class="hours-row"><span class="hours-day">الثلاثاء</span><span class="hours-time">24 ساعة</span></div>
+        <div class="hours-row"><span class="hours-day">الأربعاء</span><span class="hours-time">24 ساعة</span></div>
+        <div class="hours-row"><span class="hours-day">الخميس</span><span class="hours-time">24 ساعة</span></div>
+        <div class="hours-row"><span class="hours-day">الجمعة</span><span class="hours-time">24 ساعة</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- ADD-ONS -->
-  <section class="menu-section hidden" data-cat="addons">
-    <div class="sec-header">
-      <span class="sec-emoji">➕</span>
-      <div class="sec-title-wrap">
-        <div class="sec-title">إضافات</div>
-        <div class="sec-subtitle">نكهات إضافية</div>
-      </div>
-      <span class="sec-count">3</span>
-    </div>
-    <div class="grid-2">
-      <div class="grid-card"><div class="grid-card-emoji">🍯</div><div class="grid-card-name">نكهات</div><div class="grid-card-price">20 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">✨</div><div class="grid-card-name">توبينج</div><div class="grid-card-price">20 ج.م</div></div>
-      <div class="grid-card"><div class="grid-card-emoji">☕</div><div class="grid-card-name">إسبريسو إضافي</div><div class="grid-card-price">20 ج.م</div></div>
-    </div>
-  </section>
-
-  <!-- ===== INFO ===== -->
-  <section class="info-section">
-    <div class="info-card">
-      <div class="info-header">
-        <div class="info-icon-box">
-          <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-        <span class="info-label">الموقع</span>
-      </div>
-      <div class="info-text">شارع أحمد إسماعيل، من شارع الخمسين، النزهة الجديدة، القاهرة، مصر</div>
-    </div>
-
-    <div class="info-card">
-      <div class="info-header">
-        <div class="info-icon-box">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </div>
-        <span class="info-label">تواصل معنا</span>
-      </div>
-      <div class="info-text">
-        واتساب / طلبات: <a href="https://wa.me/201142200025">0114 220 0025</a><br>
-        فيسبوك: <a href="https://www.facebook.com/people/%D9%85%D8%B7%D8%AD%D9%86-%D8%A8%D9%86-%D8%A7%D9%84%D8%AE%D8%AF%D9%8A%D9%88%D9%89/61584338950951/">مطحن بن الخديوي</a>
-      </div>
-    </div>
-
-    <div class="info-card">
-      <div class="info-header">
-        <div class="info-icon-box">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <span class="info-label">مواعيد العمل</span>
-      </div>
-      <div class="info-text">
-        <div class="hours-grid">
-          <div class="hour-row"><span class="hour-day">السبت</span><span class="hour-time">24 ساعة</span></div>
-          <div class="hour-row"><span class="hour-day">الأحد</span><span class="hour-time">24 ساعة</span></div>
-          <div class="hour-row"><span class="hour-day">الإثنين</span><span class="hour-time">٨ ص – ٢ ص</span></div>
-          <div class="hour-row"><span class="hour-day">الثلاثاء</span><span class="hour-time">24 ساعة</span></div>
-          <div class="hour-row"><span class="hour-day">الأربعاء</span><span class="hour-time">24 ساعة</span></div>
-          <div class="hour-row"><span class="hour-day">الخميس</span><span class="hour-time">24 ساعة</span></div>
-          <div class="hour-row"><span class="hour-day">الجمعة</span><span class="hour-time">24 ساعة</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-brand">El Khdewy | الخديوي</div>
+  <p>From Palaces to Your Cup</p>
+  <p style="margin-top: 8px;">© 2026 بن وكافيه الخديوي. جميع الحقوق محفوظة.</p>
+</footer>
 
 <!-- ===== FLOATING CTA ===== -->
-<div class="fab-wrap">
-  <a class="fab" href="https://wa.me/201142200025" target="_blank">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    اطلب الآن
-  </a>
-  <a class="fab-sec" href="https://www.facebook.com/people/%D9%85%D8%B7%D8%AD%D9%86-%D8%A8%D9%86-%D8%A7%D9%84%D8%AE%D8%AF%D9%8A%D9%88%D9%89/61584338950951/" target="_blank">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-  </a>
-</div>
-
-<div class="footer">بن وكافيه الخديوي © 2026</div>
+<a class="fab" href="https://wa.me/201142200025" target="_blank">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  اطلب الآن
+</a>
 
 <script>
 (function(){
-  const pills = document.querySelectorAll('.cat-pill');
-  const sections = document.querySelectorAll('.menu-section');
-
-  pills.forEach(p => p.addEventListener('click', function(){
-    const cat = this.dataset.cat;
-    pills.forEach(x => x.classList.remove('active'));
+  // Menu tabs
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(t => t.addEventListener('click', function(){
+    const panelId = 'panel-' + this.dataset.panel;
+    tabs.forEach(x => x.classList.remove('active'));
     this.classList.add('active');
-    sections.forEach(s => {
-      if (s.dataset.cat === cat) {
-        s.classList.remove('hidden');
-        s.classList.add('animate');
-        s.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      } else {
-        s.classList.add('hidden');
-        s.classList.remove('animate');
-      }
-    });
+    panels.forEach(p => p.classList.toggle('active', p.id === panelId));
   }));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 })();
 </script>
 
